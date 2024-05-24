@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      ubuntu: latest
+    commands:
+      - echo Updating Ubuntu packages
+      - sudo apt-get update -y
+      - echo Installing Java
+      - sudo apt-get install openjdk-11-jdk -y
+      - echo Installing Node.js
+      - curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+      - sudo apt-get install -y nodejs
+
+  build:
+    commands:
+      - echo Java and Node.js installation completed
+
+  post_build:
+    commands:
+      - echo Build phase complete
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
